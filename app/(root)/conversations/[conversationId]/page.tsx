@@ -9,6 +9,8 @@ import Header from './_components/Header'
 import ChatInput from './_components/input/ChatInput'
 import Body from './_components/body/Body'
 import RemoveFriendDialog from './_components/dialogs/RemoveFriendDialog'
+import DeleteGroupDialog from './_components/dialogs/DeleteGroupDialog'
+import LeaveGroupDialog from './_components/dialogs/LeaveDialog'
 
 type Props = {
   params: Promise<{
@@ -47,8 +49,15 @@ function Conversationpage({params}: Props) {
     conversation=== null? <p className='w-full h-full flex items-center justify-center'>
       Conversation not found
     </p>:
+
     <ConversationContainer>
       <RemoveFriendDialog conversationId={conversationId} open={removeFriendDialogOpen} setOpen={setRemoveFriendDialogOpen}/>
+
+
+      <LeaveGroupDialog conversationId={conversationId} open={leaveGroupDialogOpen} setOpen={setLeaveGroupDialogOpen}/>
+
+      <DeleteGroupDialog conversationId={conversationId} open={deleteGroupDialogOpen} setOpen={setDeleteGroupDialogOpen}/>
+
 
       
       <Header name={(conversation.isGroup? conversation.name: conversation.otherMember?.username
@@ -56,7 +65,8 @@ function Conversationpage({params}: Props) {
   ) || ''} imageUrl={conversation.isGroup ? undefined : conversation.otherMember?.imageUrl}
   options={conversation.isGroup?[
     {label: "Leave group",
-    destructive: false, onClick: ()=>{
+    destructive: false,
+     onClick: ()=>{
       setLeaveGroupDialogOpen(true)
     }
   },
@@ -79,7 +89,12 @@ function Conversationpage({params}: Props) {
 
   ]}/>
 
-  <Body/>
+  <Body 
+  members={conversation.isGroup? conversation.otherMembers?
+    conversation.otherMembers: [] 
+    : conversation.otherMember? [conversation.otherMember]:[]
+  }
+  />
   <ChatInput/>
     </ConversationContainer>
 

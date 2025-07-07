@@ -1,7 +1,8 @@
 import { Card } from "@/components/ui/card";
 import { Id } from "@/convex/_generated/dataModel";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-import { User } from "lucide-react";
+import {  User } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import React, { useEffect } from "react";
 type Props = {
@@ -10,6 +11,7 @@ type Props = {
   username: string;
   lastMessageSender?: string;
   lastMessageContent?: string;
+  unseenCount: number;
 };
 
 function DMConversationItem({
@@ -18,6 +20,7 @@ function DMConversationItem({
   username,
   lastMessageContent,
   lastMessageSender,
+  unseenCount
 }: Props) {
 
 
@@ -28,7 +31,7 @@ function DMConversationItem({
 
   return (
     <Link href={`/conversations/${id}`} className="w-full">
-      <Card className="p-2 flex flex-row items-center gap-4 truncate">
+      <Card className="p-2 flex flex-row items-center justify-between">
         <div className="flex flex-row items-center gap-4 truncate">
           <Avatar>
             <AvatarImage src={imageUrl} className=" w-10 h-10 rounded-3xl" />
@@ -44,7 +47,7 @@ function DMConversationItem({
                   {lastMessageSender}
                   {":"} &nbsp;{" "}
                 </p>{" "}
-                <p className="truncate overflow-ellipsis">
+                <p className="truncate overflow-ellipsis ">
                   {lastMessageContent}
                 </p>
               </span>
@@ -55,6 +58,9 @@ function DMConversationItem({
             )}
           </div>
         </div>
+          {unseenCount ? <Badge className="bg-blue-600 rounded-2xl border-0 text-white"  >
+                  {unseenCount}
+                </Badge>: null}
       </Card>
     </Link>
   );

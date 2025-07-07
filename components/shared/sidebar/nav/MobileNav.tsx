@@ -7,7 +7,7 @@ import { useConversation } from "@/hooks/useConversation";
 import { useNavigation } from "@/hooks/useNavigation";
 import { UserButton } from "@clerk/nextjs";
 import { Tooltip, TooltipTrigger } from "@radix-ui/react-tooltip";
-import { Badge } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import React from "react";
 
@@ -44,6 +44,11 @@ function MobileNav() {
                       <p>{path.name}</p>
                     </TooltipContent>
                   </Tooltip>
+                  {path.count ? (
+                    <Badge className="absolute top-0 right-0 -mt-1 -mr-1 bg-red-500 text-white text-xs font-bold rounded-full h-4 w-4 flex items-center justify-center z-10">
+                      {path.count}
+                    </Badge>
+                  ) : null}
                 </Link>
               </li>
             );

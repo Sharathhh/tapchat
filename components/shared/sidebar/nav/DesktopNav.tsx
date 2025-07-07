@@ -47,7 +47,7 @@ function DesktopNav() {
               </Tooltip>
 
               {path.count ? (
-                <Badge className="absolute top-0 right-0 -mt-1 -mr-1 bg-red-500 text-white text-xs font-bold rounded-full h-4 w-2 flex items-center justify-center z-10">
+                <Badge className="absolute top-0 right-0 -mt-1 -mr-1 bg-red-500 text-white text-xs rounded-full h-4 w-2 flex items-center justify-center z-10">
                   {path.count}
                 </Badge>
               ) : null}

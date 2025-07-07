@@ -13,6 +13,7 @@ type Props = {
     lastByUser: boolean,
     content: string[],
     createdAt: number,
+    seen?: React.ReactNode,
     type: string
 }
 
@@ -23,8 +24,10 @@ const Message = ({fromCurrentUser,
     senderName,
     lastByUser,
     content,
-     createdAt,
-      type}: Props) => {
+    createdAt,
+    seen,
+    type
+    }: Props) => {
 
 
 
@@ -51,7 +54,7 @@ const Message = ({fromCurrentUser,
 "rounded-br-none": !lastByUser && fromCurrentUser,
 "rounded-bl-none": !lastByUser && fromCurrentUser,
     } )}>
-        {type=== "text"? <p className='text-wrap break-words whitespace-pre-wrap'> {content}</p>: null}
+        {type=== "text"? <p className='text-wrap break-words whitespace-pre-wrap break-all'> {content}</p>: null}
 
 <p className={cn("text-xs flex w-full my-1", {
     "text-primary-foreground justify-end": fromCurrentUser,
@@ -61,7 +64,11 @@ const Message = ({fromCurrentUser,
 
     </div>
 
+    {seen}
+
 </div>
+
+
 <Avatar className={cn("relative w-8 h-8",{
     "order-2": fromCurrentUser,
     "order-1": !fromCurrentUser,

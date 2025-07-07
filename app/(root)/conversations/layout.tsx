@@ -63,6 +63,7 @@ const renderIds= new Set();
                 name={conversationObj.conversation.name || ''}
                 lastMessageContent={conversationObj.lastMessage?.content}
                 lastMessageSender={conversationObj.lastMessage?.sender}
+                unseenCount={conversationObj.unseenCount}
                 
             />
             
@@ -74,7 +75,7 @@ const renderIds= new Set();
                 imageUrl={conversationObj.otherMember?.imageUrl || ''}
                 lastMessageContent={conversationObj.lastMessage?.content}
                 lastMessageSender={conversationObj.lastMessage?.sender}
-                
+                unseenCount={conversationObj.unseenCount}
             />
             );
           })

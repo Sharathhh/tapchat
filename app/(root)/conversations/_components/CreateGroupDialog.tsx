@@ -57,7 +57,6 @@ const createGroupFormSchema = z.object({
 });
 
 const CreateGroupDialog = () => {
-
   const friends = useQuery(api.friends.get);
 
   const { mutate: createGroup, pending } = useMutationState(
@@ -75,29 +74,29 @@ const CreateGroupDialog = () => {
   const members = form.watch("members", []);
 
   const unselectedFriends = useMemo(() => {
-  
-    return friends? friends.filter(friend=> !members.includes(friend._id)): []
+    return friends
+      ? friends.filter((friend) => !members.includes(friend._id))
+      : [];
 
-  // Remove duplicate friends based on _id
-  
+    // Remove duplicate friends based on _id
+  }, [members.length, friends?.length]);
 
-}, [members.length, friends?.length])
-
-
-  const handleSubmit = async (values: z.infer<typeof createGroupFormSchema>) => {
-    await createGroup({ name: values.name, members: values.members }).then(()=> {
-
-
+  const handleSubmit = async (
+    values: z.infer<typeof createGroupFormSchema>
+  ) => {
+    await createGroup({ name: values.name, members: values.members })
+      .then(() => {
         form.reset();
-        toast.success("Group created successfully!")
-
-
-    }).catch((error)=>{
-      toast.error(error instanceof ConvexError? error.data: "Unexpected error occured while creating group")
-    })
+        toast.success("Group created successfully!");
+      })
+      .catch((error) => {
+        toast.error(
+          error instanceof ConvexError
+            ? error.data
+            : "Unexpected error occured while creating group"
+        );
+      });
   };
-
-
 
   return (
     <Dialog>
@@ -166,11 +165,9 @@ const CreateGroupDialog = () => {
                           </Button>
                         </DropdownMenuTrigger>
 
-                        <DropdownMenuContent className="w-full " >
+                        <DropdownMenuContent className="w-full ">
                           {unselectedFriends.map((friend) => {
-
-
-console.log("unselected",unselectedFriends)
+                            console.log("unselected", unselectedFriends);
                             return (
                               <DropdownMenuCheckboxItem
                                 key={friend._id}
@@ -198,50 +195,49 @@ console.log("unselected",unselectedFriends)
                         </DropdownMenuContent>
                       </DropdownMenu>
                     </FormControl>
-                    <FormMessage  className="text-red-900"/>
+                    <FormMessage className="text-red-900" />
                   </FormItem>
                 );
               }}
             />
 
             {members && members.length ? (
-  <Card className="flex items-center gap-3 overflow-x-auto w-full h-24 p-2 no-scrollbar">
-    {Array.from(
-      new Map(
-        friends
-          ?.filter((friend) => members.includes(friend._id))
-          .map((friend) => [friend._id, friend])
-      ).values()
-    ).map((friend) => (
-      <div
-        key={friend._id}
-        className="flex flex-col items-center gap-1"
-      >
-        <div className="relative top-1">
-          <Avatar>
-            <AvatarImage src={friend.imageUrl} />
-            <AvatarFallback>
-              {friend.username.substring(0, 1)}
-            </AvatarFallback>
-          </Avatar>
-          <X
-            className="text-muted-foreground w-4 h-4 absolute bottom-8 left-7 bg-muted rounded-full cursor-pointer"
-            onClick={() =>
-              form.setValue(
-                "members",
-                members.filter((id) => id !== friend._id)
-              )
-            }
-          />
-        </div>
-        <p className="truncate text-sm">
-          {friend.username.split(" ")[0]}
-        </p>
-      </div>
-    ))}
-  </Card>
-) : null}
-
+              <Card className="flex items-center gap-3 overflow-x-auto w-full h-24 p-2 no-scrollbar">
+                {Array.from(
+                  new Map(
+                    friends
+                      ?.filter((friend) => members.includes(friend._id))
+                      .map((friend) => [friend._id, friend])
+                  ).values()
+                ).map((friend) => (
+                  <div
+                    key={friend._id}
+                    className="flex flex-col items-center gap-1"
+                  >
+                    <div className="relative top-1">
+                      <Avatar>
+                        <AvatarImage src={friend.imageUrl} />
+                        <AvatarFallback>
+                          {friend.username.substring(0, 1)}
+                        </AvatarFallback>
+                      </Avatar>
+                      <X
+                        className="text-muted-foreground w-4 h-4 absolute bottom-8 left-7 bg-muted rounded-full cursor-pointer"
+                        onClick={() =>
+                          form.setValue(
+                            "members",
+                            members.filter((id) => id !== friend._id)
+                          )
+                        }
+                      />
+                    </div>
+                    <p className="truncate text-sm">
+                      {friend.username.split(" ")[0]}
+                    </p>
+                  </div>
+                ))}
+              </Card>
+            ) : null}
 
             <DialogFooter>
               <Button

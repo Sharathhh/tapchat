@@ -1,4 +1,4 @@
-import { useMemo } from "react"
+import { use, useMemo } from "react"
 import {MessageSquare, Users} from "lucide-react"
 import { usePathname } from "next/navigation"
 import { useQuery } from "convex/react"
@@ -12,9 +12,15 @@ export const useNavigation=()=>{
 
     const requestsCount= useQuery(api.requests.count)
     
+    const conversations= useQuery(api.conversations.getConversation)
 
 
+    const unseenMessageCount= useMemo(()=>{
+        return conversations?.reduce((acc, curr)=>{
+            return acc+ curr.unseenCount
+        },0)
 
+    }, [conversations])
 
     const paths= useMemo(()=>[
         {
@@ -22,6 +28,7 @@ export const useNavigation=()=>{
             href: "/conversations",
             icon: <MessageSquare/>,
             active: pathname.startsWith("/conversations"),
+            count: unseenMessageCount
 
         },
         {
@@ -33,7 +40,7 @@ export const useNavigation=()=>{
 
         }
 
-    ], [pathname, requestsCount])
+    ], [pathname, requestsCount, unseenMessageCount])
 
 
     return paths;

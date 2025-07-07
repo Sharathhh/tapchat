@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Id } from "@/convex/_generated/dataModel";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-import { User } from "lucide-react";
+import { Badge, User } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect } from "react";
 type Props = {
@@ -11,6 +11,7 @@ type Props = {
 
   lastMessageSender?: string;
   lastMessageContent?: string;
+  unseenCount: number;
 };
 
 function GroupConversations({
@@ -18,7 +19,8 @@ function GroupConversations({
   name,
   lastMessageContent,
   lastMessageSender,
-  clerkId
+  clerkId,
+  unseenCount
 }: Props) {
 
 
@@ -31,7 +33,7 @@ function GroupConversations({
 
   return (
     <Link href={`/conversations/${id}`} className="w-full">
-      <Card className="p-2 flex flex-row items-center gap-4 truncate">
+      <Card className="p-2 flex flex-row items-center justify-between">
         <div className="flex flex-row items-center gap-4 truncate">
           <Avatar>
             <AvatarFallback>
@@ -57,6 +59,9 @@ function GroupConversations({
             )}
           </div>
         </div>
+        {unseenCount ? <Badge>
+          {unseenCount}
+        </Badge>: null}
       </Card>
     </Link>
   );
