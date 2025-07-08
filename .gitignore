@@ -42,6 +42,6 @@ next-env.d.ts
 
 
 #encrypted files
-/convex
-/providers
+.convex
+.providers
 .env.local
