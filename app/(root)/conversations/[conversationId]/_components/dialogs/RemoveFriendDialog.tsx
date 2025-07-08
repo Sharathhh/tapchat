@@ -34,6 +34,7 @@ function RemoveFriendDialog({ conversationId, open, setOpen }: Props) {
       await removeFriend({ conversationId })
       toast.success('Removed friend')
     } catch (error) {
+      console.error('Failed to remove friend:', error)
       toast.error('Failed to remove friend')
     }
   }

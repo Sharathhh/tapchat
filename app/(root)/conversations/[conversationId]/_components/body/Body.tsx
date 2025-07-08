@@ -39,7 +39,7 @@ const Body = ({members}: Props) => {
             })
         }
 
-    }, [messages?.length, conversationId, markRead])
+    }, [messages, conversationId, markRead])
 
 
     const formatSeenBy =(names: string[])=>{

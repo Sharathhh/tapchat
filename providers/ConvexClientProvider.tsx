@@ -1,10 +1,10 @@
 "use client"
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ClerkProvider, useAuth } from '@clerk/clerk-react';
 import { ConvexProviderWithClerk } from 'convex/react-clerk';
-import { Authenticated, AuthLoading, ConvexReactClient } from 'convex/react';
+import { AuthLoading, ConvexReactClient } from 'convex/react';
 import LoadingLogo from '@/components/shared/LoadingLogo';
-import { SignedIn,SignedOut,SignInButton, SignUpButton } from '@clerk/nextjs';
+import { SignedIn,SignedOut} from '@clerk/nextjs';
 import { SignIn } from '@clerk/clerk-react';
 type Props = {
   children: React.ReactNode;

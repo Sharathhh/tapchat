@@ -1,6 +1,6 @@
 import { httpRouter } from "convex/server";
 import {WebhookEvent} from "@clerk/nextjs/server"
-import { httpAction, internalMutation } from "./_generated/server";
+import { httpAction} from "./_generated/server";
 import {Webhook} from "svix"
 import {internal} from './_generated/api'
 

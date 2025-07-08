@@ -11,12 +11,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { useNavigation } from "@/hooks/useNavigation"
 
 export function ThemeToggle() {
 
-    const path= useNavigation();
-  
   const { setTheme } = useTheme()
 
   return (

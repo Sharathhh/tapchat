@@ -27,7 +27,7 @@ function DMConversationItem({
 
   useEffect(() => {
     console.log("Rendering DM:", id);
-  }, []);
+  }, [id]);
 
   return (
     <Link href={`/conversations/${id}`} className="w-full">

@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Id } from "@/convex/_generated/dataModel";
-import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-import { Badge, User } from "lucide-react";
+import { Avatar, AvatarFallback} from "@radix-ui/react-avatar";
+import { Badge} from "lucide-react";
 import Link from "next/link";
 import React, { useEffect } from "react";
 type Props = {

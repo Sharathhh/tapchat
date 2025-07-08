@@ -1,7 +1,7 @@
 import { Card } from '@/components/ui/card'
 import React from 'react'
 
-type Props = React.PropsWithChildren<{}>
+type Props = React.PropsWithChildren
 
 function ConversationContainer({children}: Props) {
   return (
