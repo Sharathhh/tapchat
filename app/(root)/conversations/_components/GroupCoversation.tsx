@@ -8,7 +8,6 @@ type Props = {
   id: Id<"conversations">;
   name: string;
   clerkId?: string
-
   lastMessageSender?: string;
   lastMessageContent?: string;
   unseenCount: number;
@@ -27,7 +26,7 @@ function GroupConversations({
 
   useEffect(() => {
     console.log("Rendering Group:", clerkId);
-  }, []);
+  }, [clerkId]);
 
 
 

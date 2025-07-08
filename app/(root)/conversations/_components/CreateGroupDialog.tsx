@@ -76,7 +76,7 @@ const CreateGroupDialog = () => {
   const unselectedFriends = useMemo(() => {
     return friends
       ? friends.filter((friend) => !members.includes(friend._id))
-      : [];
+      : [friends, members];
 
     // Remove duplicate friends based on _id
   }, [members.length, friends?.length]);

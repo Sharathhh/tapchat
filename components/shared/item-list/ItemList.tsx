@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 import React from 'react'
 
 type Props = React.PropsWithChildren<{
-    title: String;
+    title: string;
     actions?: React.ReactNode
 }>
 

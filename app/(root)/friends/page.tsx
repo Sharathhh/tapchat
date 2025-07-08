@@ -10,7 +10,7 @@ import { Loader2 } from "lucide-react";
 import Request from "./_components/Request";
 
 
-export default function page() {
+export default function Page() {
   const requests = useQuery(api.requests.get);
   return (
     <>

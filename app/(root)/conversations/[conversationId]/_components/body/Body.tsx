@@ -11,7 +11,6 @@ type Props = {
     members: {
         lastSeenMessageId?: Id<"messages">
         username?: string;
-        [key: string]: any;
     }[]
 }
 
