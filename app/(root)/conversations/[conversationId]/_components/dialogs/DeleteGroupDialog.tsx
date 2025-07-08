@@ -12,12 +12,9 @@ import {
   import { api } from '@/convex/_generated/api'
   import { Id } from '@/convex/_generated/dataModel'
   import { useMutationState } from '@/hooks/useMutation'
-import { useQuery } from 'convex/react'
   
   import { ConvexError } from 'convex/values'
-import { X } from 'lucide-react'
-import { useRouter } from 'next/router'
-  import React, { Dispatch,  SetStateAction,  useEffect} from 'react'
+  import React, { Dispatch,  SetStateAction} from 'react'
   import { toast } from 'sonner'
 
 
@@ -49,7 +46,7 @@ import { useRouter } from 'next/router'
 
         toast.success('Group Deleted')
 
-        setOpen(false) // ✅ Close dialog on success
+        setOpen(false) // Close dialog on success
         console.log("Dialog open state:",open)
 
 

@@ -5,8 +5,8 @@ import React from "react";
 import AddFriendDialog from "./_components/AddFriendDialog";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { Loader, Loader2 } from "lucide-react";
-import { request } from "http";
+import { Loader2 } from "lucide-react";
+
 import Request from "./_components/Request";
 
 type Props = {};

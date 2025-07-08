@@ -1,7 +1,7 @@
 import { api } from '@/convex/_generated/api'
 import { Id } from '@/convex/_generated/dataModel'
 import { useConversation } from '@/hooks/useConversation'
-import { useMutation, useQuery } from 'convex/react'
+import { useQuery } from 'convex/react'
 import React, { useEffect } from 'react'
 import Message from './Message'
 import { useMutationState } from '@/hooks/useMutation'

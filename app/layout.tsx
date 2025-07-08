@@ -1,16 +1,8 @@
 import type { Metadata } from "next";
-import {
-  ClerkProvider,
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ConvexClientProvider from "@/providers/ConvexClientProvider";
-import { Tooltip, TooltipProvider } from "@radix-ui/react-tooltip";
+import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { ThemeProvider } from "@/components/ui/theme/theme-provider";
 import { Toaster } from "sonner";
 
