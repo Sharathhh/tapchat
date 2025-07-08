@@ -42,7 +42,12 @@ function RemoveFriendDialog({ conversationId, open, setOpen }: Props) {
 
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
-      <AlertDialogContent >
+      <AlertDialogContent  className="block"
+        style={{
+          backgroundColor: "var(--dialog-bg)",
+          color: "var(--dialog-text)",
+          borderColor: "var(--dialog-border)",
+        }}>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you sure?</AlertDialogTitle>
           <AlertDialogDescription>
@@ -52,7 +57,7 @@ function RemoveFriendDialog({ conversationId, open, setOpen }: Props) {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel disabled={pending}>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={handleRemoveFriend} disabled={pending}>
+          <AlertDialogAction onClick={handleRemoveFriend} disabled={pending} className='bg-blue-600 text-amber-50'>
             Delete
           </AlertDialogAction>
         </AlertDialogFooter>

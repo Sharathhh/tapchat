@@ -74,7 +74,7 @@ function AddFriendDialog() {
     <Dialog >
       <Tooltip>
         <TooltipTrigger asChild>
-          <DialogTrigger className='bg-background ' asChild >
+          <DialogTrigger className='bg-background' asChild >
             <Button variant='outline' size='icon'>
               <UserPlus />
             </Button>
@@ -84,7 +84,12 @@ function AddFriendDialog() {
           <p>Add Friend</p>
         </TooltipContent>
       </Tooltip>
-      <DialogContent className="bg-background text-foreground border border-border rounded-2xl shadow-xl  z-50">
+      <DialogContent className="block"
+        style={{
+          backgroundColor: "var(--dialog-bg)",
+          color: "var(--dialog-text)",
+          borderColor: "var(--dialog-border)",
+        }}>
         <DialogHeader>
           <DialogTitle>Add friend</DialogTitle>
           <DialogDescription>
@@ -107,7 +112,7 @@ function AddFriendDialog() {
               )}
             />
             <DialogFooter>
-              <Button disabled={pending} type='submit'>
+              <Button disabled={pending} type='submit' className='bg-blue-600 text-amber-50'>
                 Send
 
 

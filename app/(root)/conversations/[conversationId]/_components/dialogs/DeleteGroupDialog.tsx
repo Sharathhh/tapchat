@@ -66,7 +66,12 @@ import { useRouter } from 'next/router'
   
     return (
       <AlertDialog open={open} onOpenChange={setOpen} >
-        <AlertDialogContent>
+        <AlertDialogContent className="block"
+        style={{
+          backgroundColor: "var(--dialog-bg)",
+          color: "var(--dialog-text)",
+          borderColor: "var(--dialog-border)",
+        }}>
           <AlertDialogHeader>
             <AlertDialogTitle>Are you sure?</AlertDialogTitle>
             <AlertDialogDescription>
@@ -79,7 +84,7 @@ import { useRouter } from 'next/router'
               Cancel
             </AlertDialogCancel>
 
-            <AlertDialogAction onClick={handleDeleteGroup} disabled={pending} style={{backgroundColor: "red"}}>
+            <AlertDialogAction onClick={handleDeleteGroup} disabled={pending} className='bg-blue-600 text-amber-50'>
               Delete
             </AlertDialogAction>
           </AlertDialogFooter>

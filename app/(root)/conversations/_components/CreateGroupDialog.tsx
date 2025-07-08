@@ -171,7 +171,7 @@ const CreateGroupDialog = () => {
                             return (
                               <DropdownMenuCheckboxItem
                                 key={friend._id}
-                                className="flex items-center gap-2 w-full p-2 bg-white "
+                                className="flex items-center gap-2 w-full p-2 bg-white text-black"
                                 onCheckedChange={(checked) => {
                                   if (checked) {
                                     form.setValue("members", [
