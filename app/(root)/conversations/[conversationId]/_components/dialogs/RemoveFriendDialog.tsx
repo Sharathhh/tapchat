@@ -33,8 +33,7 @@ function RemoveFriendDialog({ conversationId, open, setOpen }: Props) {
       router.push('/conversations') // redirect immediately before state changes
       await removeFriend({ conversationId })
       toast.success('Removed friend')
-    } catch (err) {
-
+    } catch (error) {
       toast.error('Failed to remove friend')
     }
   }

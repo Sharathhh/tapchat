@@ -9,9 +9,8 @@ import { Loader2 } from "lucide-react";
 
 import Request from "./_components/Request";
 
-type Props = {};
 
-export default function page({}: Props) {
+export default function page() {
   const requests = useQuery(api.requests.get);
   return (
     <>
@@ -19,8 +18,7 @@ export default function page({}: Props) {
         {requests ? (
           requests.length === 0 ? (
             <p
-              className="pw-full h-full flex items-center
-  justify-center"
+              className="pw-full h-full flex items-center justify-center"
             >
               No friend request found
             </p>

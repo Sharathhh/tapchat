@@ -24,7 +24,7 @@ type Props = {
 };
 
 function LeaveGroupDialog({ conversationId, open, setOpen }: Props) {
-  4;
+  
 
   const { mutate: leaveGroup, pending } = useMutationState(
     api.conversation.leaveGroup
@@ -36,7 +36,7 @@ function LeaveGroupDialog({ conversationId, open, setOpen }: Props) {
 
       toast.success("Group Left");
 
-      setOpen(false); // ✅ Close dialog on success
+      setOpen(false); //  Close dialog on success
       console.log("Dialog open state:", open);
     } catch (error) {
       toast.error(
